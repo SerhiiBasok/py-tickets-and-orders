@@ -3,6 +3,7 @@ from django.db.models import QuerySet
 from db.models import Order, Ticket, MovieSession
 from django.db import transaction
 
+
 def create_order(
         tickets: list[dict],
         username: str,
