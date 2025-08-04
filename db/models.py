@@ -109,7 +109,7 @@ class Ticket(models.Model):
         free_seats = self.movie_session.cinema_hall.seats_in_row
         free_rows = self.movie_session.cinema_hall.rows
 
-        if free_rows < self.row:
+        if not 1 <= self.row <= free_rows:
             raise ValidationError(
                 {
                     "row": [f"row number must be in available range:"
@@ -117,7 +117,7 @@ class Ticket(models.Model):
                             f" (1, {free_rows})"]
                 }
             )
-        if free_seats < self.seat:
+        if not 1 <= self.seat <= free_seats:
             raise ValidationError(
                 {
                     "seat": [f"seat number must be in available range:"
