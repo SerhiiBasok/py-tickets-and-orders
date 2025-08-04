@@ -3,11 +3,10 @@ from django.db.models import QuerySet
 from db.models import Order, Ticket, MovieSession
 from django.db import transaction
 
-
 def create_order(
         tickets: list[dict],
         username: str,
-        date: int = None
+        date: str = None
 ) -> None:
     with transaction.atomic():
         user = get_user_model().objects.get(username=username)
